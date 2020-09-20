@@ -11,9 +11,11 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    private CoronaVirusDataService coronaVirusDataService;
 
-    @Autowired
-    CoronaVirusDataService coronaVirusDataService;
+    public HomeController(CoronaVirusDataService coronaVirusDataService) {
+        this.coronaVirusDataService = coronaVirusDataService;
+    }
 
     @GetMapping("/")
     public String home(Model model) {
@@ -25,5 +27,4 @@ public class HomeController {
         model.addAttribute("totalNewCases", totalNewCases);
         return "home";
     }
-
 }
